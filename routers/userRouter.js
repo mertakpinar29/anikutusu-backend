@@ -76,7 +76,7 @@ router.post('/signin', async (req, res) => {
     const accessToken = jwt.sign(
       { email: user.email, id: user._id },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '15s' }
+      { expiresIn: '3m' }
     )
 
     const refreshToken = jwt.sign(
@@ -139,7 +139,7 @@ router.get('/refresh/:id', async (req, res) => {
       const accessToken = jwt.sign(
         { email: x.email, id: x.id },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '15s' }
+        { expiresIn: '3m' }
       )
 
       res.status(200).json(accessToken)
