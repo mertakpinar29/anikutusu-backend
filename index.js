@@ -15,6 +15,15 @@ app.use(express.json({ limit: '20mb' }))
 app.use(cors({ credentials: true, origin: 'https://ani-kutusu.netlify.app' }))
 app.use(cookieParser())
 
+app.all('*', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://ani-kutusu.netlify.app')
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With')
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  next()
+})
+
+app.set('trust proxy', 1)
+
 app.use('/memories', memoryRouter)
 app.use('/users', userRouter)
 
