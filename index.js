@@ -11,7 +11,6 @@ dotenv.config()
 
 const app = express()
 
-app.set('trust proxy', 1)
 app.use(express.json({ limit: '20mb' }))
 app.use(cors({ credentials: true, origin: 'https://ani-kutusu.netlify.app' }))
 app.use(cookieParser())
